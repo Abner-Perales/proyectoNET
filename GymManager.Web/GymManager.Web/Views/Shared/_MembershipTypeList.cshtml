@@ -1,0 +1,35 @@
+﻿@model List<GymManager.Core.MembershipTypes.MembershipType>
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Cost</th>
+            <th scope="col">CreatedOn</th>
+            <th scope="col">Duration in months</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var membershipType in Model)
+        {
+            <tr>
+                <th scope="row">@membershipType.Name</th>
+                <td>@membershipType.Cost</td>
+                <td>@membershipType.CreatedOn.ToString("dd/MM/yyyy")</td>
+                <td>@membershipType.Duration</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-outline-info" asp-route-membershipTypeId="@membershipType.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-membershipTypeId="@membershipType.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,75 @@
+﻿@model GymManager.Web.Models.AttendanceViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link href="~/lib/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="~/lib/jqueryui/jquery-ui.structure.min.css" rel="stylesheet" />
+
+    <link href="~/lib/jqueryui/jquery-ui.theme.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="~/Views/Members/Createt.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/lib/moment.js"></script>
+
+    <script src="~/JS/member.js"></script>
+}
+
+<div class="container">
+
+    <h3 class="mt-5">Check in</h3>
+
+    <form asp-action="MemberIn">
+
+        <input type="hidden" asp-for="CheckType" value=1 />
+
+        <div class="row">
+            <div class="col-sm-4 justify-content-end">
+                <label asp-for="IdMember" class="form-label">Enter id member:</label>
+                <input type="number" class="form-control" asp-for="IdMember" id="inputId" />
+                <span asp-validation-for="IdMember" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary mb-3" id="btnMemberIn" onclick="validateInput('MemberIn')">OK</button>
+        <p class="text-danger">@Model.Message</p>
+
+    </form>
+
+    <div class="modal fade" id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
